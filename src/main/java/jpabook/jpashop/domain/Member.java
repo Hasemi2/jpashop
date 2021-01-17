@@ -3,6 +3,8 @@ package jpabook.jpashop.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +20,10 @@ public class Member {
 
     private String name;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<Order>();
+    private List<Order> orders = new ArrayList<>();
 
 }

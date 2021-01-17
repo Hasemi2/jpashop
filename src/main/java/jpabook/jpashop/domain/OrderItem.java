@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import jpabook.jpashop.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,5 +26,6 @@ public class OrderItem {
     private Order order;
 
     private int orderPrice;
+
     private int count;
 }

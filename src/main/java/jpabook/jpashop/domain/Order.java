@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +15,8 @@ import java.util.List;
 @Table(name = "ORDERS")
 public class Order {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
 
@@ -26,15 +28,20 @@ public class Order {
     private List<OrderItem> orderItems =
             new ArrayList<>();
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date orderDate;
+    //OneToOne 은 양쪽에 FK를 둬도 상관이 없음
+    //주로 access를 많이 하는 곳에 두는 것이 좋음
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
+
+    private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     public void setMember(Member member) {
         //기존 관계 제거
-        if(this.member != null){
+        if (this.member != null) {
             this.member.getOrders().remove(this);
         }
         this.member = member;
