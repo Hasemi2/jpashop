@@ -5,6 +5,10 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
+  output:
+    ansi:
+      enabled: always
+
   jpa:
     hibernate:
       ddl-auto: create
