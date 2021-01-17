@@ -20,7 +20,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
@@ -30,7 +30,7 @@ public class Order {
 
     //OneToOne 은 양쪽에 FK를 둬도 상관이 없음
     //주로 access를 많이 하는 곳에 두는 것이 좋음
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
