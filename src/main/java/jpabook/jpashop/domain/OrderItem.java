@@ -15,6 +15,7 @@ public class OrderItem {
     @Id
     @GeneratedValue
     @Column(name = "ORDER_ITEM_ID")
+
     private Long id;
 
     @ManyToOne
@@ -24,6 +25,10 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
 
     private int orderPrice;
 
