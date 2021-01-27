@@ -35,11 +35,8 @@ public class OrderServiceTest {
 
     @Test
     public void 주문_잘되는가() throws Exception {
-        Member member = new Member();
-        member.setName("semi");
-        member.setAddress(new Address("극락" , "천국" , "수세미"));
-        em.persist(member);
 
+        Member member = createMember();
         Book book = createBook("숨", "테드창짱", 10000, 10);
 
         int orderCount = 2;
