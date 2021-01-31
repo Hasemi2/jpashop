@@ -17,6 +17,10 @@ spring:
 #        show_sql: true //시스템으로 찍음, 로거 대체
         format_sql : true
 
+  devtools:
+    restart:
+      enabled: true
+
 logging:
   level:
     org.hibernate.SQL: debug
