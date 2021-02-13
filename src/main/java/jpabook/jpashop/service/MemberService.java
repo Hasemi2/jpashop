@@ -43,10 +43,16 @@ public class MemberService {
     /**
      * 회원 단건 조회
      *
-     * @param member
+     * @param id
      * @return
      */
-    public Member findOne(Member member) {
-        return memberRepository.findOne(member.getId());
+    public Member findOne(Long id) {
+        return memberRepository.findOne(id);
+    }
+
+    @Transactional
+    public void update(Long id, String name) {
+       Member member =  memberRepository.findOne(id);
+       member.setName(name);
     }
 }
